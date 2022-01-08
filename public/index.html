@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real estate</title>
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/alert.css" />
+    <!-- jQuery CDN -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style-login.css" />
+    <script src="script/script.js"></script>
+    <script src="script/login.js"></script>
+    <style>
+        .featured .box-container .box .image-container img {
+            filter: blur(8px);
+            -webkit-filter: blur(8px);
+        }
+        
+        .home {
+            background: url(images/home-bg.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header section starts -->
+    <!-- partial:index.partial.html -->
+    <div id="navbar-animmenu">
+        <ul class="show-dropdown main-navbar">
+            <div class="hori-selector">
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <li class="active">
+                <a href="#home"><i class="fas fa-home"></i>home</a>
+            </li>
+            <li>
+                <a href="#services"><i class="fas fa-briefcase"></i>services</a>
+            </li>
+            <li>
+                <a href="#featured"><i class="far fa-hand-pointer"></i>featured</a>
+            </li>
+            <li>
+                <a href="#agents"><i class="fas fa-users"></i>agents</a>
+            </li>
+            <li>
+                <a href="#contact"><i class="far fa-address-book"></i>contact</a>
+            </li>
+
+
+        </ul>
+        <div class="icons">
+            <a href="#" onclick="openModal();" class="fas fa-heart"></a>
+            <a href="#user" onclick="myFunction()" class="fas fa-user"></a>
+        </div>
+    </div>
+    <script>
+        // ---------horizontal-navbar-menu-----------
+        var tabsNewAnim = $('#navbar-animmenu');
+        var selectorNewAnim = $('#navbar-animmenu').find('li').length;
+        //var selectorNewAnim = $(".tabs").find(".selector");
+        var activeItemNewAnim = tabsNewAnim.find('.active');
+        var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+        var itemPosNewAnimLeft = activeItemNewAnim.position();
+        $(".hori-selector").css({
+            "left": itemPosNewAnimLeft.left + "px",
+            "width": activeWidthNewAnimWidth + "px"
+        });
+        $("#navbar-animmenu").on("click", "li", function(e) {
+            $('#navbar-animmenu ul li').removeClass("active");
+            $(this).addClass('active');
+            var activeWidthNewAnimWidth = $(this).innerWidth();
+            var itemPosNewAnimLeft = $(this).position();
+            $(".hori-selector").css({
+                "left": itemPosNewAnimLeft.left + "px",
+                "width": activeWidthNewAnimWidth + "px"
+            });
+        });
+    </script>
+
+    <!-- header section ends -->
+
+
+    <section id="alert">
+        <div id="myModal" class="modal" style="background-color: black">
+            <div class="modal-content">
+                <p class="clr">
+                    <strong>Alert!</strong> Login or Signup First for our services.
+                </p>
+                <img src="images/alert.jpg" width="600px" height="600%" alt="" />
+                <span class="close cursor" onclick="closeModal()">&times;</span>
+            </div>
+        </div>
+    </section>
+    <section id="user" style="display: none">
+        <div class="container">
+            <div class="forms-container">
+                <div class="signin-signup">
+                    <form action="/page" class="sign-in-form" id="in" name="myform" method="post">
+                        <h2 class="title">Sign in</h2>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Username" name="name" style="text-transform: lowercase;" required/>
+                        </div>
+                        <div class=" input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Password" minlength="6" maxlength="18" name="pword" required />
+                        </div>
+                        <input type="submit" value="Login" class="btn1 solid" />
+                    </form>
+                    <form action="/login" method="post" class="sign-up-form">
+                        <h2 class="title">Sign up</h2>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Username" id="uname" name="uname" style="text-transform: lowercase;" required/>
+                        </div>
+                        <div class=" input-field">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Email" id="email" name="email" required />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" minlength="6" maxlength="18" required placeholder="Password" id="password" name="password" />
+                        </div>
+                        <input type="submit" class="btn1" value="Sign up" />
+                    </form>
+                </div>
+            </div>
+
+            <div class="panels-container">
+                <div class="panel left-panel">
+                    <div class="content">
+                        <h3>New here ?</h3>
+                        <p>
+                            Sign Up Here <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                        </p>
+                        <button class="btn1 transparent" id="sign-up-btn" style="border: rgb(255, 255, 255) 2px solid;">Sign up</button>
+                    </div>
+                </div>
+                <div class="panel right-panel">
+                    <div class="content" style="color: black">
+                        <h3>One of us ?</h3>
+                        <p>
+                            Sign In Here <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                        </p>
+                        <button class="btn1 transparent" id="sign-in-btn" style="border: black 2px solid; color: #000">
+                Sign in
+              </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const sign_in_btn = document.querySelector("#sign-in-btn");
+            const sign_up_btn = document.querySelector("#sign-up-btn");
+            const container = document.querySelector(".container");
+
+            sign_up_btn.addEventListener("click", () => {
+                container.classList.add("sign-up-mode");
+            });
+
+            sign_in_btn.addEventListener("click", () => {
+                container.classList.remove("sign-up-mode");
+            });
+        </script>
+    </section>
+    <section class="home" id="home">
+        <form name="serch" onsubmit="return validatform()">
+            <h3>find your perfect home</h3>
+            <div class="buttons-container">
+                <a href="#" onclick="openModal();" class="btn" style="width: 200px">for rent</a>
+                <a href="#" onclick="openModal();" class="btn">for sell</a>
+            </div>
+            <div id="alet" style="color: red; display: none">
+                Please Fill All Fields...!!!!!!
+            </div>
+            <div class="inputBox">
+                <input type="search" name="n" placeholder="Neighborhood" id="ngbr" />
+                <input type="search" name="c" placeholder="City" id="ct" />
+                <select name="min" id="min" required>
+            <option value="" disabled hidden selected>minimum price</option>
+            <option value="$5000">$5000</option>
+            <option value="$10000">$10000</option>
+            <option value="$15000">$15000</option>
+            <option value="$20000">$20000</option>
+            <option value="$25000">$25000</option>
+          </select>
+                <select name="max" id="max" required>
+            <option value="" disabled hidden selected>maximum price</option>
+            <option value="$30000">$30000</option>
+            <option value="$35000">$35000</option>
+            <option value="$40000">$40000</option>
+            <option value="$45000">$45000</option>
+            <option value="$50000">$50000</option>
+          </select>
+                <select name="prop_stats" id="prop_stats" required>
+            <option value="" disabled hidden selected>property status</option>
+            <option value="Ready To Move">Ready To Move</option>
+            <option value="under construction">under construction</option>
+            <option value="furnished">furnished</option>
+            <option value="semi-furnished">semi-furnished</option>
+            <option value="unfurnished">unfurnished</option>
+          </select>
+                <select name="typ" id="typ" required>
+            <option value="" disabled hidden selected>property type</option>
+            <option value="flat">flat</option>
+            <option value="house">house</option>
+            <option value="shop">shop</option>
+            <option value="warehouse">warehouse</option>
+            <option value="land">land</option>
+          </select>
+                <select name="bhk" id="bhk" required>
+            <option value="" disabled hidden selected>BHK</option>
+            <option value="1 BHK">1 BHK</option>
+            <option value="2 BHK">2 BHK</option>
+            <option value="3 BHK">3 BHK</option>
+            <option value="4 BHK">4 BHK</option>
+            <option value="5 BHK">5 BHK</option>
+          </select>
+                <select name="aminities" id="aminities" required>
+            <option value="" disabled hidden selected>aminities</option>
+            <option value="parking space">parking space</option>
+            <option value="swimming pool">swimming pool</option>
+            <option value="playground">playground</option>
+            <option value="security">security</option>
+            <option value="all">all</option>
+          </select>
+                <select name="bedrooms" id="bedrooms" required>
+            <option value="" disabled hidden selected>bedrooms</option>
+            <option value="1 bedroom">1 bedroom</option>
+            <option value="2 bedroom">2 bedroom</option>
+            <option value="3 bedroom">3 bedroom</option>
+            <option value="4 bedroom">4 bedroom</option>
+            <option value="5 bedroom">5 bedroom</option>
+          </select>
+                <select name="bathrooms" id="bathrooms" required>
+            <option value="" disabled hidden selected>bathrooms</option>
+            <option value="1 bathroom">1 bathroom</option>
+            <option value="2 bathroom">2 bathroom</option>
+            <option value="3 bathroom">3 bedroom</option>
+            <option value="4 bathroom">4 bathroom</option>
+            <option value="5 bathroom">5 bathroom</option>
+          </select>
+            </div>
+            <input type="submit" value="We will Contact You" onclick="openModal();" id="get" class="btn" />
+        </form>
+    </section>
+    <!-- home section ends -->
+    <!-- services section starts -->
+    <section class="services" id="services">
+        <h1 class="heading">our <span>services</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="images/s-1.png" alt="" />
+                <h3>buying home</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam distinctio ipsa ab cum error quas fuga ad? Perspiciatis, autem officiis?
+                </p>
+                <a href="#" onclick="openModal();" class="btn">learn more</a>
+            </div>
+            <div class="box">
+                <img src="images/s-2.png" alt="" />
+                <h3>renting home</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam distinctio ipsa ab cum error quas fuga ad? Perspiciatis, autem officiis?
+                </p>
+                <a href="#" onclick="openModal();" class="btn">learn more</a>
+            </div>
+            <div class="box">
+                <img src="images/s-3.png" alt="" />
+                <h3>selling home</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam distinctio ipsa ab cum error quas fuga ad? Perspiciatis, autem officiis?
+                </p>
+                <a href="#" onclick="openModal();" class="btn">learn more</a>
+            </div>
+        </div>
+    </section>
+    <!-- services section ends -->
+    <!-- featured section starts -->
+    <section class="featured" id="featured">
+        <h1 class="heading"><span>featured</span> properties</h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="image-container">
+                    <img src="images/img-1.jpg" alt="" />
+                    <div class="info">
+                        <h3>3 days ago</h3>
+                        <h3>for rent</h3>
+                    </div>
+                    <div class="icons">
+                        <a href="#" onclick="openModal();" class="fas fa-film">
+                            <h3>1</h3>
+                        </a>
+                        <a href="#" onclick="openModal();" class="fas fa-camera">
+                            <h3>4</h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="price">
+                        <h3>$25,000/mo</h3>
+                        <a href="#" onclick="openModal();" class="fas fa-heart"></a>
+                        <a href="#" onclick="openModal();" class="fas fa-envelope"></a>
+                        <a href="#" onclick="openModal();" class="fas fa-phone"></a>
+                    </div>
+                    <div class="location">
+                        <h3>modern apartments</h3>
+                        <p>Uma Nagar,Sandha,Chhapra Bihar india - 841302</p>
+                    </div>
+                    <div class="details">
+                        <h3><i class="fas fa-expand"></i> 3500 sqft</h3>
+                        <h3><i class="fas fa-bed"></i> 3 beds</h3>
+                        <h3><i class="fas fa-bath"></i> 2 baths</h3>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" onclick="openModal();" class="btn">request info</a>
+                        <a href="#" onclick="openModal()" ; class="btn">view details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image-container">
+                    <img src="images/img-2.jpg" alt="" />
+                    <div class="info">
+                        <h3>6 days ago</h3>
+                        <h3>for sell</h3>
+                    </div>
+                    <div class="icons">
+                        <a href="#" onclick="openModal();" class="fas fa-film">
+                            <h3>2</h3>
+                        </a>
+                        <a href="#" onclick="openModal();" class="fas fa-camera">
+                            <h3>7</h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="price">
+                        <h3>$25,000/mo</h3>
+                        <a href="#" onclick="openModal();" class="fas fa-heart"></a>
+                        <a href="#" onclick="openModal();" class="fas fa-envelope"></a>
+                        <a href="#" onclick="openModal();" class="fas fa-phone"></a>
+                    </div>
+                    <div class="location">
+                        <h3>modern apartments</h3>
+                        <p>Uma Nagar,Sandha,Chhapra Bihar india - 841302</p>
+                    </div>
+                    <div class="details">
+                        <h3><i class="fas fa-expand"></i> 3500 sqft</h3>
+                        <h3><i class="fas fa-bed"></i> 3 beds</h3>
+                        <h3><i class="fas fa-bath"></i> 2 baths</h3>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" onclick="openModal();" class="btn">request info</a>
+                        <a href="#" onclick="openModal();" class="btn">view details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image-container">
+                    <img src="images/img-3.jpg" alt="" />
+                    <div class="info">
+                        <h3>1 days ago</h3>
+                        <h3>for rent</h3>
+                    </div>
+                    <div class="icons">
+                        <a href="#" onclick="openModal();" class="fas fa-film">
+                            <h3>1</h3>
+                        </a>
+                        <a href="#" onclick="openModal();" class="fas fa-camera">
+                            <h3>6</h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="price">
+                        <h3>$25,000/mo</h3>
+                        <a href="#" onclick="openModal();" class="fas fa-heart"></a>
+                        <a href="#" onclick="openModal();" class="fas fa-envelope"></a>
+                        <a href="#" onclick="openModal();" class="fas fa-phone"></a>
+                    </div>
+                    <div class="location">
+                        <h3>modern apartments</h3>
+                        <p>Uma Nagar,Sandha,Chhapra Bihar india - 841302</p>
+                    </div>
+                    <div class="details">
+                        <h3><i class="fas fa-expand"></i> 3500 sqft</h3>
+                        <h3><i class="fas fa-bed"></i> 3 beds</h3>
+                        <h3><i class="fas fa-bath"></i> 2 baths</h3>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" onclick="openModal();" class="btn">request info</a>
+                        <a href="#" onclick="openModal();" class="btn">view details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image-container">
+                    <img src="images/img-4.jpg" alt="" />
+                    <div class="info">
+                        <h3>9 days ago</h3>
+                        <h3>for rent</h3>
+                    </div>
+                    <div class="icons">
+                        <a href="#" class="fas fa-film">
+                            <h3>2</h3>
+                        </a>
+                        <a href="#" class="fas fa-camera">
+                            <h3>6</h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="price">
+                        <h3>$25,000/mo</h3>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-envelope"></a>
+                        <a href="#" class="fas fa-phone"></a>
+                    </div>
+                    <div class="location">
+                        <h3>modern apartments</h3>
+                        <p>Uma Nagar,Sandha,Chhapra Bihar india - 841302</p>
+                    </div>
+                    <div class="details">
+                        <h3><i class="fas fa-expand"></i> 3500 sqft</h3>
+                        <h3><i class="fas fa-bed"></i> 3 beds</h3>
+                        <h3><i class="fas fa-bath"></i> 2 baths</h3>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" class="btn">request info</a>
+                        <a href="#" onclick="openModal();" class="btn">view details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image-container">
+                    <img src="images/img-5.jpg" alt="" />
+                    <div class="info">
+                        <h3>10 days ago</h3>
+                        <h3>for sell</h3>
+                    </div>
+                    <div class="icons">
+                        <a href="#" class="fas fa-film">
+                            <h3>3</h3>
+                        </a>
+                        <a href="#" class="fas fa-camera">
+                            <h3>8</h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="price">
+                        <h3>$25,000/mo</h3>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-envelope"></a>
+                        <a href="#" class="fas fa-phone"></a>
+                    </div>
+                    <div class="location">
+                        <h3>modern apartments</h3>
+                        <p>Uma Nagar,Sandha,Chhapra Bihar india - 841302</p>
+                    </div>
+                    <div class="details">
+                        <h3><i class="fas fa-expand"></i> 3500 sqft</h3>
+                        <h3><i class="fas fa-bed"></i> 3 beds</h3>
+                        <h3><i class="fas fa-bath"></i> 2 baths</h3>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" class="btn">request info</a>
+                        <a href="#" onclick="openModal();" class="btn">view details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image-container">
+                    <img src="images/img-6.jpg" alt="" />
+                    <div class="info">
+                        <h3>3 days ago</h3>
+                        <h3>for sell</h3>
+                    </div>
+                    <div class="icons">
+                        <a href="#" class="fas fa-film">
+                            <h3>1</h3>
+                        </a>
+                        <a href="#" class="fas fa-camera">
+                            <h3>4</h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="price">
+                        <h3>$25,000/mo</h3>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-envelope"></a>
+                        <a href="#" class="fas fa-phone"></a>
+                    </div>
+                    <div class="location">
+                        <h3>modern apartments</h3>
+                        <p>Uma Nagar,Sandha,Chhapra Bihar india - 841302</p>
+                    </div>
+                    <div class="details">
+                        <h3><i class="fas fa-expand"></i> 3500 sqft</h3>
+                        <h3><i class="fas fa-bed"></i> 3 beds</h3>
+                        <h3><i class="fas fa-bath"></i> 2 baths</h3>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" class="btn">request info</a>
+                        <a href="#" onclick="openModal();" class="btn">view details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- featured section ends -->
+    <!-- agents section starts -->
+    <section class="agents" id="agents">
+        <h1 class="heading">professional <span>agents</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <a href="#" onclick="openModal();" class="fas fa-envelope"></a>
+                <a href="#" onclick="openModal();" class="fas fa-phone"></a>
+                <img src="images/pic-1.png" alt="" />
+                <h3>Haneet</h3>
+                <span>agent</span>
+                <div class="share">
+                    <a href="#" onclick="openModal();" class="fab fa-facebook-f"></a>
+                    <a href="#" onclick="openModal();" class="fab fa-twitter"></a>
+                    <a href="#" onclick="openModal();" class="fab fa-instagram"></a>
+                    <a href="#" onclick="openModal();" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+            <div class="box">
+                <a href="#" onclick="openModal();" class="fas fa-envelope"></a>
+                <a href="#" onclick="openModal();" class="fas fa-phone"></a>
+                <img src="images/pic-3.png" alt="" />
+                <h3>Abhishek</h3>
+                <span>agent</span>
+                <div class="share">
+                    <a href="#" onclick="openModal();" onclick="openModal();" class="fab fa-facebook-f"></a>
+                    <a href="#" onclick="openModal();" class="fab fa-twitter"></a>
+                    <a href="#" onclick="openModal();" onclick="openModal();" target="blank" class="fab fa-instagram"></a>
+                    <a href="#" onclick="openModal();" onclick="openModal();" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+            <div class="box">
+                <a href="#" onclick="openModal();" class="fas fa-envelope"></a>
+                <a href="#" onclick="openModal();" class="fas fa-phone"></a>
+                <img src="images/pic-2.png" alt="" />
+                <h3>Anjali</h3>
+                <span>agent</span>
+                <div class="share">
+                    <a href="#" onclick="openModal();" target="blank" class="fab fa-facebook-f"></a>
+                    <a href="#" onclick="openModal();" target="blank" class="fab fa-twitter"></a>
+                    <a href="#" onclick="openModal();" target="blank" class="fab fa-instagram"></a>
+                    <a href="#" onclick="openModal();" target="blank" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- agents section ends -->
+    <!-- contact section starts -->
+    <section class="contact" id="contact">
+        <h1 class="heading"><span>contact</span> us</h1>
+        <div class="icons-container">
+            <div class="icons">
+                <img src="images/icon-1.png" alt="" />
+                <h3>phone number</h3>
+                <p>+123-456-7890</p>
+                <p>+111-222-3333</p>
+            </div>
+            <div class="icons">
+                <img src="images/icon-2.png" alt="" />
+                <h3>email address</h3>
+                <p>devil@gmail.com</p>
+                <p>abhishek@gmail.com</p>
+            </div>
+            <div class="icons">
+                <img src="images/icon-3.png" alt="" />
+                <h3>office address</h3>
+                <p>Mauna Chawk, Chhapra,Bihar,India - 841301</p>
+            </div>
+        </div>
+        <div class="row">
+            <form action="">
+                <div class="inputBox">
+                    <input type="text" placeholder="name" />
+                    <input type="number" placeholder="number" />
+                </div>
+                <div class="inputBox">
+                    <input type="email" placeholder="email" />
+                    <input type="text" placeholder="subject" />
+                </div>
+                <textarea name="" placeholder="message" id="" cols="30" rows="10"></textarea>
+                <input type="submit" value="send message" class="btn" />
+            </form>
+            <div class="g2">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57483.1041224349!2d84.71100485191722!3d25.78066869812823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3992bb17fdf6ea1f%3A0xe3bbfac01f4ab27a!2sChapra%2C%20Bihar!5e0!3m2!1sen!2sin!4v1638239785408!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy" style="height: 300px"></iframe>
+            </div>
+            <script src="js/index.js"></script>
+        </div>
+        <!-- angular js code -->
+        <script>
+            var app = angular.module("DemoApp", []);
+            app.controller("DemoController", function($scope) {
+                $scope.Display = function() {
+                    $scope.user = "Angular";
+                };
+            });
+        </script>
+    </section>
+    <!-- contact section ends -->
+    <!-- footer section starts -->
+    <section class="footer">
+        <div class="footer-container">
+            <div class="box-container">
+                <div class="box">
+                    <h3>branch location</h3>
+                    <a href="#" onclick="openModal();">india</a>
+                    <a href="#" onclick="openModal();">USA</a>
+                    <a href="#" onclick="openModal();">france</a>
+                    <a href="#" onclick="openModal();">russia</a>
+                    <a href="#" onclick="openModal();">japan</a>
+                </div>
+                <div class="box">
+                    <h3>quick links</h3>
+                    <a href="#home">home</a>
+                    <a href="#services">services</a>
+                    <a href="#featured">featured</a>
+                    <a href="#agents">agents</a>
+                    <a href="#contact">contact</a>
+                </div>
+                <div class="box">
+                    <h3>follow us</h3>
+                    <a href="#" onclick="openModal();">facebook</a>
+                    <a href="#" onclick="openModal();">twitter</a>
+                    <a href="#" onclick="openModal();">instagram</a>
+                    <a href="#" onclick="openModal();">linkedin</a>
+                </div>
+            </div>
+            <div class="credit">
+                created by <span> Devil Creation own by Abhishek Raj </span> | all rights reserved!
+            </div>
+        </div>
+    </section>
+    <!-- footer section ends -->
+    <!-- javascript part -->
+    <script>
+        let menu = document.querySelector("#menu-bars");
+        let navbar = document.querySelector(".navbar");
+        menu.onclick = () => {
+            navbar.classList.toggle("active");
+            menu.classList.toggle("fa-times");
+        };
+        window.onscroll = () => {
+            navbar.classList.remove("active");
+            menu.classList.remove("fa-times");
+        };
+    </script>
+</body>
+
+</html>

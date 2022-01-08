@@ -1,0 +1,21 @@
+{
+    "name": "real-estate-project-1-minor",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "devil": "nodemon src/app.js -e js,html"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.2",
+        "html": "^1.0.0",
+        "mongo": "^0.1.0",
+        "mongodb": "^4.3.0",
+        "mongoose": "^6.1.5",
+        "nodemon": "^2.0.15"
+    }
+}
