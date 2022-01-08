@@ -20,10 +20,10 @@ app.set("view engine", "html")
 
 //
 app.get("/", (req, res) => {
-    res.render("index")
+    res.render('/index.html');
 });
-app.get("/home", (req, res) => {
-    res.sendFile(path.join(__dirname, '/index1.html'))
+app.get("/index1", (req, res) => {
+    res.render('/index1');
 });
 // create a new user in our database
 app.post("/login", async(req, res) => {
@@ -34,7 +34,8 @@ app.post("/login", async(req, res) => {
                 password: req.body.password
             })
             const registered = await registernewusers.save();
-            res.render("/home");
+            res.redirect("index1.html");
+
         } catch (error) {
             res.status(400).send(error);
         }
@@ -46,7 +47,7 @@ app.post("/page", async(req, res) => {
         const password = req.body.pword;
         const usernam = await Register.findOne({ username: username });
         if (usernam.password === password) {
-            res.status(201).render("/home");
+            res.redirect("index1.html");
         } else {
             res.send("Password wrong")
         }
