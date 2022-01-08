@@ -78,7 +78,7 @@
     </script>
     <!-- header section ends -->
     <section class="home" id="home">
-        <form name="serch" onsubmit="return validatform()">
+        <form name="serch" action="/client" class="client" method="post">
             <h3>find your perfect home</h3>
             <div class="buttons-container">
                 <a href="#" class="btn" style="width: 200px;">for rent</a>
@@ -527,7 +527,7 @@
             </div>
         </div>
         <div class="row">
-            <form action="" method="" name="Form">
+            <form action="/feedback" method="post" name="Form">
                 <div class="inputBox">
                     <input type="text" placeholder="Name" name="user" id="nme" required>
                     <input type="number" placeholder="Number" maxlength="10" minlength="10" name="no" id="num" required>
