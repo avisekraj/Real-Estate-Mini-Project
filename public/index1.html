@@ -536,7 +536,7 @@
                     <input type="email" placeholder="Email" name="email" id="mail" required>
                     <input type="text" placeholder="Subject" id="sub" name="sub" required>
                 </div>
-                <textarea name="" placeholder="Message" id="msg" name="get" cols="30" rows="10" required></textarea>
+                <textarea placeholder="Message" id="msg" name="get" cols="30" rows="10" required></textarea>
                 <div id="alert" style="color: red;"></div>
                 <input type="submit" id="send" value="send message" class="btn" style="width: 200px;">
             </form>
@@ -580,18 +580,7 @@
     </section>
     <!-- footer section ends -->
     <!-- javascript part -->
-    <script>
-        let menu = document.querySelector('#menu-bars');
-        let navbar = document.querySelector('.navbar');
-        menu.onclick = () => {
-            navbar.classList.toggle('active');
-            menu.classList.toggle('fa-times');
-        }
-        window.onscroll = () => {
-            navbar.classList.remove('active');
-            menu.classList.remove('fa-times');
-        }
-    </script>
+
 </body>
 
 </html>
