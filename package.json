@@ -8,7 +8,7 @@
         "devil": "nodemon src/app.js -e js,html"
     },
     "keywords": [],
-    "author": "",
+    "author": "Abhishek Raj",
     "license": "ISC",
     "dependencies": {
         "express": "^4.17.2",
